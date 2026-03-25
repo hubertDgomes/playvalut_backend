@@ -16,6 +16,7 @@ const addGameToCategory = async (req, res) => {
     developer,
     publisher,
     catName,
+    isNewRel,
   } = req.body;
 
   if (!title || !price || !platform || !catName) {
@@ -58,6 +59,8 @@ const addGameToCategory = async (req, res) => {
       logo,
       coverImage,
       publisher,
+      isNewRel,
+      catName
     });
 
     await newGame.save();

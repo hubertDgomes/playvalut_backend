@@ -10,7 +10,12 @@
     discountPercentage: String, 
     logo : String,  
     coverImage: String, 
-    trailerUrl: String, 
+    trailerUrl: String,
+    catName : String,
+    isNewRel : {
+      type : Boolean,
+      default : false
+    },
     systemRequirements: { 
       minimum: {  
         os: String, 
