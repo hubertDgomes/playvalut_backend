@@ -4,8 +4,19 @@ import router from "./routes/allRouters.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
+import session from "express-session";
 
 const app = express();
+
+app.set("trust proxy", 1); // trust first proxy
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true, sameSite: "none", httpOnly: true },
+  }),
+);
 
 const allowedOrigins = [
   "http://localhost:5173",
