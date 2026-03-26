@@ -8,26 +8,25 @@ import session from "express-session";
 
 const app = express();
 
-app.set("trust proxy", 1); // trust first proxy
+app.set("trust proxy", 1); 
 app.use(
   session({
     secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: false,
-    proxy: true, // Required for Vercel
+    resave: true, // Force session to be saved back to the session store
+    saveUninitialized: true, // Force a session that is "uninitialized" to be saved to the store
+    proxy: true, 
     cookie: {
-      secure: true, // Required for SameSite: 'none'
-      sameSite: "none", // Required for cross-site cookies
+      secure: true,
+      sameSite: "none",
       httpOnly: true,
-      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     },
   }),
 );
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://playvault-client.vercel.app", // Corrected spelling from playvalult
-  "https://playvault-backend.vercel.app", 
+  "https://playvalult-client.vercel.app/", // Corrected spelling from playvalult 
 ];
 
 const corsOptions = {
