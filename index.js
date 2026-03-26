@@ -7,19 +7,20 @@ import cors from "cors";
 import session from "express-session";
 
 const app = express();
+const isProd = process.env.NODE_ENV === "production";
 
-app.set("trust proxy", 1); 
+app.set("trust proxy", 1);
 app.use(
   session({
     secret: "keyboard cat",
-    resave: true, // Force session to be saved back to the session store
-    saveUninitialized: true, // Force a session that is "uninitialized" to be saved to the store
-    proxy: true, 
+    resave: false,
+    saveUninitialized: false,
+    proxy: true,
     cookie: {
-      secure: true,
-      sameSite: "none",
+      secure: isProd,
+      sameSite: isProd ? "none" : "lax",
       httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     },
   }),
 );
