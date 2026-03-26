@@ -14,13 +14,20 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true, sameSite: "none", httpOnly: true },
+    proxy: true, // Required for Vercel
+    cookie: {
+      secure: true, // Required for SameSite: 'none'
+      sameSite: "none", // Required for cross-site cookies
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    },
   }),
 );
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://playvalult-client.vercel.app",
+  "https://playvault-client.vercel.app", // Corrected spelling from playvalult
+  "https://playvault-backend.vercel.app", 
 ];
 
 const corsOptions = {
