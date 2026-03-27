@@ -15,6 +15,8 @@ import logoutController from "../controllers/logoutController.js";
 import addToCart from "../controllers/addToCart.js";
 import usersCartGames from "../controllers/usersCartGames.js";
 import removeCartItem from "../controllers/removeCartItem.js";
+import addToLibrary from "../controllers/addToLibrary.js";
+import getLibrary from "../controllers/getLibrary.js";
 
 const router = express.Router();
 
@@ -51,5 +53,7 @@ router.get("/dashboard" , dashboardMiddleware , dashboard)
 router.post("/addgames/:id" , addToCart)
 router.get("/showcart" , usersCartGames)
 router.delete("/deletecart/:id" , removeCartItem)
+router.post("/addtolib" , addToLibrary)
+router.get("/getlibrary" , getLibrary)
 
 export default router;

@@ -27,7 +27,7 @@ app.use(
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://playvalult-client.vercel.app", // Corrected spelling from playvalult 
+  "https://playvalult-client.vercel.app",
 ];
 
 const corsOptions = {

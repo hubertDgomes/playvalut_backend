@@ -22,6 +22,14 @@ const userSchema = new Schema({
       },
     },
   ],
+  buyGames: [
+    {
+      games: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "games",
+      },
+    },
+  ],
 });
 
 export default mongoose.model("userdatas", userSchema);
